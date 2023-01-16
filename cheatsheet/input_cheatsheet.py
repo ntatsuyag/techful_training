@@ -2,6 +2,11 @@
 
 a,b,c = input().split()  # 特定個の文字列の入力を受け取る
 a,b,c = map(int, input().split())  # 特定個の数字の入力を受け取る
+# ---------------------------------------------------------
+# 少数をdecimalでうけとる
+from decimal import Decimal
+A, B = map(Decimal, input().split())
+print(int(A*B))
 
 # list
 str_list = list(input().split())  # n個の文字列がリストに格納される
