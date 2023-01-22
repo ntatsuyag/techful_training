@@ -3,3 +3,6 @@
 
 # techful
 https://techful-programming.com/
+
+# 参考
+https://kyo-pro.hatenablog.com/entry/AtCoder-pattern
