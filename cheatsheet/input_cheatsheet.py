@@ -26,7 +26,7 @@ str_list = [list(input().split()) for _ in range(n)]
 
 # 行数 + 複数数字のパターン 
 n = int(input())  # nは入力回数
-str_list = [list(map(int, input().split())) for _ in range(n)]
+num_list = [list(map(int, input().split())) for _ in range(n)]
 
 # 入力が列(縦)に並ぶパターン
 # N
