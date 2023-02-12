@@ -18,5 +18,7 @@ A_list = [[i+1,int(input())] for i,_ in enumerate(range(N))]
 ans = sorted(A_list, reverse=True, key=lambda l: l[1])
 output = ' '.join(list(map(str,[l[0] for l in ans]))) # 多次元配列のある要素をスペース区切りで出力
 print(output)
-
+# 2つのkeyでsortすることも可能
+# 以下の例ではl[0]でsortし同じならl[1]でsortする
+ans = sorted(A_list, reverse=True, key=lambda l: (l[0],l[1]))
 
