@@ -6,6 +6,7 @@ sys.stdin=io.StringIO(TXT_INPUT)
 # --------------------------------------------------------
 import sys
 sys.setrecursionlimit(10**6)
+from collections import deque
 def main():
     N = int(input())  # nは入力回数
     bomb_list = [list(map(int, input().split())) for _ in range(N)]
@@ -21,6 +22,34 @@ def main():
             return True
         else:
             return False
+
+
+    def bomb_search(i,bomb,bomb_list,bomb_flags):
+        for j in range(i+1,len(bomb_list)):
+            if (bomb[0] == bomb_list[j][0] or bomb[1] == bomb_list[j][1]) and bomb_flags[j] == 0:
+                # print(bomb,bomb_list[j])
+                bomb_flags[j] = 1
+                next_bomb = bomb_list[j]
+                bomb_search(j,next_bomb,bomb_list,bomb_flags)
+        
+        
+    count = 0
+    for i,bomb in enumerate(bomb_list):
+        if bomb_flags[i] == 0:
+            bomb_search(i,bomb,bomb_list,bomb_flags)
+            bomb_flags[i] = 1
+            count += 1
+            # print(bomb_flags)
+            if check(bomb_flags) == True:
+                break
+        else:
+            continue
+
+    print(count)
+
+if __name__ == '__main__':
+    main()
+
 
     # def bomb_search(i,bomb,bomb_list,bomb_flags):
     #     for bombj in bomb_list: #bomjの挙動が変になる
@@ -48,29 +77,3 @@ def main():
     #             break
     #     else:
     #         continue
-
-    def bomb_search(i,bomb,bomb_list,bomb_flags):
-        for j in range(i+1,len(bomb_list)):
-            if (bomb[0] == bomb_list[j][0] or bomb[1] == bomb_list[j][1]) and bomb_flags[j] == 0:
-                # print(bomb,bomb_list[j])
-                bomb_flags[j] = 1
-                next_bomb = bomb_list[j]
-                bomb_search(i,next_bomb,bomb_list,bomb_flags)
-        
-        
-    count = 0
-    for i,bomb in enumerate(bomb_list):
-        if bomb_flags[i] == 0:
-            bomb_search(i,bomb,bomb_list,bomb_flags)
-            bomb_flags[i] = 1
-            count += 1
-            # print(bomb_flags)
-            if check(bomb_flags) == True:
-                break
-        else:
-            continue
-
-    print(count)
-
-if __name__ == '__main__':
-    main()
