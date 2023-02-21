@@ -18,7 +18,9 @@ for d in daihuku:
     for _ in range(d[1]):
         daihukuq.append(d[0])
 
-for i in range(daihuku[-1][1]+2): #日付  
+# print(daihuku[-1][0]+1,'日考慮する')
+for i in range(daihuku[-1][0]+2): #日付
+    # print(i,'日目')
     if len(daihukuq) == 0:
             break
     else:
@@ -26,12 +28,14 @@ for i in range(daihuku[-1][1]+2): #日付
         while (daihukuq[0]<i):
             daihukuq.popleft()
             haiki+=1
+            # print(i,'廃棄',haiki)
             if len(daihukuq) == 0:
-                break  
+                break
     
-    for _ in range(N):
+    for _ in range(N): #消費
         if len(daihukuq) == 0:
             break
-        daihukuq.popleft()
+        else:
+            daihukuq.popleft()
 
 print(haiki)
